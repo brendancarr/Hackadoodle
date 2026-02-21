@@ -1,0 +1,59 @@
+{
+    "name": "weather_forecast",
+    "background": "#0a1628",
+    "width": 240,
+    "height": 240,
+    "zones": [
+        {
+            "field": "date",
+            "x": 10,
+            "y": 8,
+            "font": "bold24",
+            "color": "#ffffff",
+            "filters": ["date_short"],
+            "max_width": 220
+        },
+        {
+            "field": "title",
+            "x": 10,
+            "y": 46,
+            "font": "bold18",
+            "color": "#ffcc44",
+            "filters": ["truncate(20)"],
+            "max_width": 220
+        },
+        {
+            "field": "value",
+            "x": 10,
+            "y": 90,
+            "font": "bold48",
+            "color": "#ffffff",
+            "max_width": 160
+        },
+        {
+            "field": "subtitle",
+            "x": 10,
+            "y": 158,
+            "font": "regular18",
+            "color": "#7799bb",
+            "max_width": 220
+        },
+        {
+            "field": "meta.precip_pct",
+            "x": 10,
+            "y": 195,
+            "font": "regular16",
+            "color": "#4fc3f7",
+            "max_width": 220
+        },
+        {
+            "field": "location",
+            "x": 10,
+            "y": 218,
+            "font": "regular12",
+            "color": "#334455",
+            "filters": ["truncate(28)"],
+            "max_width": 220
+        }
+    ]
+}

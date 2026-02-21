@@ -1,0 +1,52 @@
+{
+    "name": "calendar_basic",
+    "background": "#0d0d0d",
+    "width": 240,
+    "height": 240,
+    "zones": [
+        {
+            "field": "date",
+            "x": 10,
+            "y": 8,
+            "font": "bold32",
+            "color": "#ff6b35",
+            "filters": ["date_short"],
+            "max_width": 220
+        },
+        {
+            "field": "title",
+            "x": 10,
+            "y": 58,
+            "font": "bold24",
+            "color": "#ffffff",
+            "filters": ["truncate(18)"],
+            "max_width": 220
+        },
+        {
+            "field": "subtitle",
+            "x": 10,
+            "y": 92,
+            "font": "regular18",
+            "color": "#aaaaaa",
+            "filters": ["truncate(24)"],
+            "max_width": 220
+        },
+        {
+            "field": "value",
+            "x": 10,
+            "y": 148,
+            "font": "bold48",
+            "color": "#4fc3f7",
+            "max_width": 220
+        },
+        {
+            "field": "location",
+            "x": 10,
+            "y": 210,
+            "font": "regular16",
+            "color": "#666666",
+            "filters": ["truncate(26)"],
+            "max_width": 220
+        }
+    ]
+}

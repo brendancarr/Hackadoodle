@@ -1,0 +1,5 @@
+Pillow>=10.0.0
+PySide6>=6.6.0
+requests>=2.31.0
+icalendar>=5.0.0
+feedparser>=6.0.10

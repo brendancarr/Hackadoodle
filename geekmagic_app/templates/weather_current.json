@@ -1,0 +1,67 @@
+{
+    "name": "weather_current",
+    "background": "#0a1628",
+    "width": 240,
+    "height": 240,
+    "zones": [
+        {
+            "field": "location",
+            "x": 10,
+            "y": 8,
+            "font": "bold24",
+            "color": "#7799bb",
+            "filters": ["truncate(18)"],
+            "max_width": 165
+        },
+        {
+            "field": "meta.wmo_code",
+            "type": "weather_icon",
+            "x": 168,
+            "y": 0,
+            "size": 72
+        },
+        {
+            "field": "date",
+            "x": 10,
+            "y": 40,
+            "font": "regular16",
+            "color": "#445566",
+            "filters": ["date_short"],
+            "max_width": 230
+        },
+        {
+            "field": "value",
+            "x": 10,
+            "y": 80,
+            "font": "bold48",
+            "color": "#ffffff",
+            "max_width": 220
+        },
+        {
+            "field": "title",
+            "x": 10,
+            "y": 142,
+            "font": "bold18",
+            "color": "#ffcc44",
+            "filters": ["truncate(22)"],
+            "max_width": 230
+        },
+        {
+            "field": "subtitle",
+            "x": 10,
+            "y": 170,
+            "font": "regular16",
+            "color": "#aabbcc",
+            "filters": ["truncate(28)"],
+            "max_width": 230
+        },
+        {
+            "field": "meta.wind",
+            "x": 10,
+            "y": 198,
+            "font": "regular16",
+            "color": "#667788",
+            "max_width": 230
+        }
+    ]
+}

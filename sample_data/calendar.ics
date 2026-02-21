@@ -1,0 +1,66 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//GeekMagic Test//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+
+BEGIN:VEVENT
+UID:001@geekmagic
+SUMMARY:Team standup
+DESCRIPTION:Daily sync with the engineering team.\nAgenda: blockers\, sprint progress\, announcements.
+DTSTART:20260223T100000Z
+DTEND:20260223T103000Z
+LOCATION:Zoom - Room 4B
+STATUS:CONFIRMED
+END:VEVENT
+
+BEGIN:VEVENT
+UID:002@geekmagic
+SUMMARY:Lunch with Sarah
+DESCRIPTION:Catch up + Q2 planning discussion
+DTSTART:20260223T123000Z
+DTEND:20260223T133000Z
+LOCATION:The Acorn\, 142 Main St
+STATUS:CONFIRMED
+END:VEVENT
+
+BEGIN:VEVENT
+UID:003@geekmagic
+SUMMARY:Sprint review
+DESCRIPTION:Demo new features to stakeholders. Please prepare your section.
+DTSTART:20260224T150000Z
+DTEND:20260224T160000Z
+LOCATION:Board Room B
+STATUS:CONFIRMED
+END:VEVENT
+
+BEGIN:VEVENT
+UID:004@geekmagic
+SUMMARY:Company all-hands
+DESCRIPTION:Quarterly all-hands meeting with Q1 results and roadmap preview
+DTSTART:20260225T140000Z
+DTEND:20260225T153000Z
+LOCATION:Main Auditorium
+STATUS:CONFIRMED
+END:VEVENT
+
+BEGIN:VEVENT
+UID:005@geekmagic
+SUMMARY:Server maintenance window
+DESCRIPTION:Scheduled downtime for database upgrades
+DTSTART:20260301
+DTEND:20260302
+STATUS:TENTATIVE
+END:VEVENT
+
+BEGIN:VEVENT
+UID:006@geekmagic
+SUMMARY:Old event (should be filtered)
+DESCRIPTION:This event is in the past and should not appear with upcoming_only=True
+DTSTART:20250101T090000Z
+DTEND:20250101T100000Z
+LOCATION:Somewhere
+STATUS:CONFIRMED
+END:VEVENT
+
+END:VCALENDAR
