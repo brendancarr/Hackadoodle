@@ -197,6 +197,55 @@ WMO_ICON_FN = {
 }
 
 
+# ── Wind & humidity badges ───────────────────────────────────────────────────
+
+def draw_wind_badge(img: Image.Image, speed_str: str, x: int, y: int,
+                    font, text_colour: str = "#aabbcc"):
+    """
+    Wind icon: three horizontal streaks tapering right + arrowhead, then speed text.
+    (x, y) = top-left of the badge area.
+    """
+    draw = ImageDraw.Draw(img)
+    ic = "#7799bb"   # icon colour
+    cy = y + 10      # vertical centre of the icon
+
+    # Three wind streaks at different lengths
+    for dy, x1 in [(-4, x + 14), (0, x + 18), (4, x + 14)]:
+        draw.line([(x, cy + dy), (x1, cy + dy)], fill=ic, width=2)
+
+    # Arrowhead pointing right, aligned with middle streak
+    ax = x + 18
+    draw.polygon([(ax, cy - 5), (ax + 8, cy), (ax, cy + 5)], fill=ic)
+
+    # Speed text to the right of icon
+    draw.text((x + 30, y + 2), speed_str, font=font, fill=text_colour)
+    del draw
+
+
+def draw_humidity_badge(img: Image.Image, humidity_str: str, x: int, y: int,
+                        font, text_colour: str = "#aabbcc"):
+    """
+    Humidity icon: teardrop (circle + upward triangle point) then humidity% text.
+    (x, y) = top-left of the badge area.
+    """
+    draw = ImageDraw.Draw(img)
+    ic = "#4fc3f7"   # icon colour
+    r  = 6
+    cx = x + r + 1
+    cy = y + 14      # centre of the round base
+
+    # Round base of teardrop
+    draw.ellipse([cx - r, cy - r, cx + r, cy + r], fill=ic)
+
+    # Triangular tip pointing upward
+    draw.polygon([(cx, cy - r - 7), (cx - r + 1, cy - r + 2),
+                  (cx + r - 1, cy - r + 2)], fill=ic)
+
+    # Humidity text to the right of icon
+    draw.text((x + 18, y + 2), humidity_str, font=font, fill=text_colour)
+    del draw
+
+
 # ── Public API ────────────────────────────────────────────────────────────────
 
 def draw_weather_icon(

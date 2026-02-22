@@ -10,14 +10,14 @@
             "y": 8,
             "font": "bold24",
             "color": "#7799bb",
-            "filters": ["truncate(18)"],
+            "filters": ["truncate(22)"],
             "max_width": 165
         },
         {
             "field": "meta.wmo_code",
             "type": "weather_icon",
-            "x": 168,
-            "y": 0,
+            "x": 148,
+            "y": 75,
             "size": 72
         },
         {
@@ -25,14 +25,14 @@
             "x": 10,
             "y": 40,
             "font": "regular16",
-            "color": "#445566",
+            "color": "#667788",
             "filters": ["date_short"],
-            "max_width": 230
+            "max_width": 220
         },
         {
             "field": "value",
             "x": 10,
-            "y": 80,
+            "y": 70,
             "font": "bold48",
             "color": "#ffffff",
             "max_width": 220
@@ -40,28 +40,36 @@
         {
             "field": "title",
             "x": 10,
-            "y": 142,
+            "y": 132,
             "font": "bold18",
             "color": "#ffcc44",
             "filters": ["truncate(22)"],
-            "max_width": 230
+            "max_width": 220
         },
         {
             "field": "subtitle",
             "x": 10,
-            "y": 170,
+            "y": 160,
             "font": "regular16",
             "color": "#aabbcc",
-            "filters": ["truncate(28)"],
-            "max_width": 230
+            "filters": ["truncate(26)"],
+            "max_width": 160
         },
         {
             "field": "meta.wind",
+            "type": "wind_badge",
             "x": 10,
-            "y": 198,
-            "font": "regular16",
-            "color": "#667788",
-            "max_width": 230
+            "y": 210,
+            "font": "regular14",
+            "color": "#aabbcc"
+        },
+        {
+            "field": "meta.humidity",
+            "type": "humidity_badge",
+            "x": 148,
+            "y": 210,
+            "font": "regular14",
+            "color": "#aabbcc"
         }
     ]
 }

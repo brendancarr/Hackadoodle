@@ -9,7 +9,7 @@ Usage:
 
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
-from geekmagic_app.renderer.weather_icons import draw_weather_icon
+from geekmagic_app.renderer.weather_icons import draw_weather_icon, draw_wind_badge, draw_humidity_badge
 from geekmagic_app.renderer.template_loader import Template, Zone
 from geekmagic_app.models.data_item import DataItem
 from geekmagic_app.renderer.filters import apply_filters
@@ -146,7 +146,7 @@ class Renderer:
         return Image.new("RGB", (template.width, template.height), color)
 
     def _draw_zone(self, img: Image.Image, draw: ImageDraw.Draw, zone: Zone, item: DataItem, canvas_width: int) -> None:
-        # Handle weather icon zones separately — they draw shapes, not text
+        # Handle special zone types — shapes, not text
         if zone.type == "weather_icon":
             raw = item.meta.get("wmo_code", 0)
             try:
@@ -155,6 +155,20 @@ class Renderer:
                 wmo_code = 0
             size = zone.size or 64
             draw_weather_icon(img, wmo_code, zone.x, zone.y, size)
+            return
+
+        if zone.type == "wind_badge":
+            speed = str(item.meta.get("wind", "")).strip()
+            if speed:
+                font = self.fonts.get(zone.font)
+                draw_wind_badge(img, speed, zone.x, zone.y, font, zone.color)
+            return
+
+        if zone.type == "humidity_badge":
+            humi = str(item.meta.get("humidity", "")).strip()
+            if humi:
+                font = self.fonts.get(zone.font)
+                draw_humidity_badge(img, humi, zone.x, zone.y, font, zone.color)
             return
 
         # 1. Get raw value from data item

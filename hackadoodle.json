@@ -1,0 +1,41 @@
+{
+  "device_ip": "10.0.0.195",
+  "brightness": 80,
+  "interval": 10,
+  "sources": [
+    {
+      "type": "weather",
+      "label": "Mission",
+      "template": "weather_current",
+      "config": {
+        "lat": 49.13298,
+        "lon": -122.30258,
+        "location": "Mission, British Columbia, Canada",
+        "units": "celsius",
+        "max_days": 2
+      }
+    },
+    {
+      "type": "ics",
+      "label": "Astronomy",
+      "template": "calendar_basic",
+      "config": {
+        "path": "https://cantonbecker.com/astronomy-calendar/astrocal.ics",
+        "upcoming_only": true,
+        "days_ahead": 2
+      }
+    },
+    {
+      "type": "time",
+      "label": "Current Time",
+      "template": "clock",
+      "config": {}
+    }
+  ],
+  "tile_order": [
+    "Mission (1)",
+    "Mission (2)",
+    "Carrmail",
+    "Current Time"
+  ]
+}

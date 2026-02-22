@@ -55,15 +55,17 @@ class IcsSource(DataSource):
         self,
         url_or_path: str,
         upcoming_only: bool = False,
+        days_ahead: int | None = None,
         max_items: int | None = None,
         timeout: int = 10,
         headers: dict[str, str] | None = None,
     ):
-        self.url_or_path = url_or_path
+        self.url_or_path   = url_or_path
         self.upcoming_only = upcoming_only
-        self.max_items = max_items
-        self.timeout = timeout
-        self.headers = headers or {}
+        self.days_ahead    = days_ahead   # None = no limit, 1 = today, 2 = today+tomorrow
+        self.max_items     = max_items
+        self.timeout       = timeout
+        self.headers       = headers or {}
 
     # ── DataSource interface ──────────────────────────────────────────────────
 
@@ -89,6 +91,13 @@ class IcsSource(DataSource):
         items = []
         now = datetime.now(tz=timezone.utc)
 
+        # Cutoff = end of the Nth day from today (midnight at end of that day)
+        if self.days_ahead is not None:
+            cutoff = (now.replace(hour=0, minute=0, second=0, microsecond=0)
+                      + timedelta(days=self.days_ahead))
+        else:
+            cutoff = None
+
         for component in cal.walk():
             if component.name != "VEVENT":
                 continue
@@ -97,11 +106,15 @@ class IcsSource(DataSource):
                 if item is None:
                     continue
 
+                event_dt = self._as_datetime(component.get("DTSTART"))
+
                 # Filter past events if requested
-                if self.upcoming_only:
-                    event_dt = self._as_datetime(component.get("DTSTART"))
-                    if event_dt and event_dt < now:
-                        continue
+                if self.upcoming_only and event_dt and event_dt < now:
+                    continue
+
+                # Filter events beyond days_ahead window
+                if cutoff and event_dt and event_dt >= cutoff:
+                    continue
 
                 items.append(item)
             except Exception as e:

@@ -36,11 +36,11 @@ def filter_truncate(value: str, arg: str | None = None) -> str:
 def filter_date_short(value: str, _=None) -> str:
     """Parse common date formats and render as e.g. 'Feb 21'."""
     import sys
-
+    
     # Handle datetime objects passed directly
     if isinstance(value, datetime):
         return value.strftime("%b %-d" if sys.platform != "win32" else "%b %#d")
-
+    
     # Handle stringified datetimes (e.g. from DataItem.get())
     formats = [
         "%Y-%m-%dT%H:%M:%S%z",
@@ -54,9 +54,11 @@ def filter_date_short(value: str, _=None) -> str:
     ]
     # Strip timezone suffix that strptime can't always handle
     clean = value.strip()
-    for fmt in formats:
+
+    for fmt in formats: #not working
         try:
-            dt = datetime.strptime(clean[:len(fmt)], fmt)
+            dt = datetime.strptime(clean, fmt)
+            
             return dt.strftime("%b %-d" if sys.platform != "win32" else "%b %#d")
         except (ValueError, AttributeError):
             continue
